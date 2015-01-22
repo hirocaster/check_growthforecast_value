@@ -78,24 +78,24 @@ func main() {
 		if c.String("direction") == "upward" {
 			switch {
 			case current_value >= critical_value:
-				fmt.Println(Critical)
+				os.Exit(Critical)
 			case current_value >= warning_value:
-				fmt.Println(Warning)
+				os.Exit(Warning)
 			default:
-				fmt.Println(Success)
+				os.Exit(Success)
 			}
 		} else if c.String("direction") == "downward" {
 			switch {
 			case current_value <= critical_value:
-				fmt.Println(Critical)
+				os.Exit(Critical)
 			case current_value <= warning_value:
-				fmt.Println(Warning)
+				os.Exit(Warning)
 			default:
-				fmt.Println(Success)
+				os.Exit(Success)
 			}
 		} else {
-			fmt.Println(Unknown)
-			panic("unknown direction option, only 'upward' or 'downward'")
+			fmt.Println("unknown direction option, only 'upward' or 'downward'")
+			os.Exit(Unknown)
 		}
 	}
 
