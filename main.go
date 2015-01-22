@@ -9,6 +9,8 @@ import (
 	"strconv"
 )
 
+var Version string = "0.0.1"
+
 const (
 	Success  = 0
 	Warning  = 1
@@ -19,7 +21,7 @@ const (
 func main() {
 	app := cli.NewApp()
 	app.Name = "check_growthforecast_value"
-	app.Version = "0.0.1"
+	app.Version = Version
 	app.Usage = "Nagios Monitoring for growthforecast value"
 	app.Author = "hirocaster"
 	app.Email = "hohtsuka@gmail.com"
