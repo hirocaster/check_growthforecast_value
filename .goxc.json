@@ -1,0 +1,8 @@
+{
+	"ArtifactsDest": "pkg",
+	"Arch": "386 amd64",
+	"Os": "linux darwin",
+	"MainDirsExclude": "_vendor",
+	"PackageVersion": "0.0.1",
+	"ConfigVersion": "0.9"
+}

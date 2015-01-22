@@ -1,3 +1,4 @@
 gom 'github.com/codegangsta/cli'
 gom 'github.com/franela/goreq'
 gom 'github.com/m0a/easyjson'
+gom 'github.com/laher/goxc'
