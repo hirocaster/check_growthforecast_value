@@ -40,7 +40,7 @@ func main() {
 		cli.StringFlag{
 			Name:  "direction, d",
 			Value: "upward",
-			Usage: "direction default:upward or downward",
+			Usage: "direction upward(default) or downward",
 		},
 		cli.StringFlag{
 			Name:  "warning, w",
@@ -62,39 +62,48 @@ func main() {
 
 		resp, err := http.Get(url)
 		if err != nil {
-			panic(err)
+			fmt.Println("Unknown - http get error")
+			os.Exit(Unknown)
 		}
 
 		if resp.StatusCode != http.StatusOK {
-			panic(resp.StatusCode)
+			fmt.Println("Unknown - error http status code is", resp.StatusCode)
+			os.Exit(Unknown)
 		}
 
 		json, err := easyjson.NewEasyJson(resp.Body)
 		if err != nil {
-			panic("json convert err")
+			fmt.Println("Unknown - json convert error")
+			os.Exit(Unknown)
 		}
 
 		current_value, _ := json.K(c.String("item")).K(0).AsInt()
 		if c.String("direction") == "upward" {
 			switch {
 			case current_value >= critical_value:
+				fmt.Println("Critical - current value is", current_value, "greater than", critical_value)
 				os.Exit(Critical)
 			case current_value >= warning_value:
+				fmt.Println("Warning - current value is", current_value, "greater than", warning_value)
 				os.Exit(Warning)
 			default:
+				fmt.Println("Success - current value is", current_value)
 				os.Exit(Success)
 			}
 		} else if c.String("direction") == "downward" {
 			switch {
 			case current_value <= critical_value:
+				fmt.Println("Critical - current value is", current_value, "less than", critical_value)
 				os.Exit(Critical)
 			case current_value <= warning_value:
+				fmt.Println("Warning - current value is", current_value, "less than", warning_value)
 				os.Exit(Warning)
 			default:
+				fmt.Println("Success - current value is ", current_value)
 				os.Exit(Success)
 			}
 		} else {
-			fmt.Println("unknown direction option, only 'upward' or 'downward'")
+			fmt.Println("Unknown - unknown direction option, only 'upward' or 'downward'")
 			os.Exit(Unknown)
 		}
 	}
