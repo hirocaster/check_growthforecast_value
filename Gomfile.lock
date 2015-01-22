@@ -1,0 +1,4 @@
+gom 'github.com/codegangsta/cli', :commit => 'bf4a526f48af7badd25d2cb02d587e1b01be3b50'
+gom 'github.com/franela/goreq', :commit => 'bdc873376fe6a3774b4679a1cbab37b0ce74de70'
+gom 'github.com/m0a/easyjson', :commit => '49655d7d67bb2ad549c35ad70935b5d1abac558c'
+gom 'github.com/laher/goxc', :commit => '6629689d44fd183f8d29a3f2d1cd4e6174294299'
